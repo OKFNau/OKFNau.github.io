@@ -102,9 +102,9 @@ opacity:0.5;
 
 .cartodb-legend-stack {
     /*bottom: 120px !important; 
-    left: 77% !important;
+    left: 77% !important;*/
     
-    right: auto !important;*/
+    right: 26% !important;
 }
 
 .cartodb-infowindow p, .cartodb-popup p {
