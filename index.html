@@ -39,7 +39,7 @@
 </script>
   </head>
   <body>
-    <div id="map"></div>
+<iframe height="100%" width="75%" frameborder="0" src="https://stevage.cartodb.com/viz/5bd91834-a98b-11e3-a8d1-0e10bcd91c2b/embed_map" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
     <div class="sidepanel">
       <div class="wrapper">
       <div class="backgroundtext">
@@ -95,17 +95,18 @@
 
     <script>
       function main() {
-        var map = new L.Map('map', {
+        /*var map = new L.Map('map', {
           zoomControl: false,
           center: [-37.8072, 144.9728],
           minZoom: 13,
           maxZoom: 17,
           zoom: 14
-        });
-        var ts=Math.round(new Date().getTime()/1000.0);
-        L.tileLayer('http://map.hipstermelbourne.org/tile/InnerNorth/{z}/{x}/{y}.png?metatile=8&updated=1'/* + ts*/, {
+        }); */
+        /*var ts=Math.round(new Date().getTime()/1000.0);
+        L.tileLayer('http://map.hipstermelbourne.org/tile/InnerNorth/{z}/{x}/{y}.png?metatile=8&updated=1', {
           attribution: 'Hipsters + OpenStreetMap'
         }).addTo(map);
+        */
         /* This method serves tiles from our TileMill */
         
         /*L.tileLayer('http://map.hipstermelbourne.org:5500/v2/hipster/{z}/{x}/{y}.png?metatile=8&updated=' + ts, {
@@ -120,24 +121,27 @@
         });
         */
         /* This method serves tiles from CartoDB... */
-        
+       /* 
         cartodb.createVis('map', 'http://stevage.cartodb.com/api/v2/viz/5bd91834-a98b-11e3-a8d1-0e10bcd91c2b/viz.json')
          //.addTo(map)
          .done(function(vis, layers) {
 
           layers[1].setInteraction(true);
-
+layers[1].on('featureOver', function(e, latlng, pos, data, subLayerIndex) {
+  console.log("mouse over polygon with data: " + data);
+});
 
         }).on('error', function() {
           cartodb.log.log("some error occurred");
         });
-        cartodb.createLayer(map, 'http://stevage.cartodb.com/api/v2/viz/96b9b164-bdec-11e3-a522-0e73339ffa50/viz.json')
+        */
+        /*cartodb.createLayer(map, 'http://stevage.cartodb.com/api/v2/viz/96b9b164-bdec-11e3-a522-0e73339ffa50/viz.json')
           .addTo(map)
           .on('done', function(layer) {
 
             layer.setInteraction(true);
           });
-        
+        */
       }
 
       // you could use $(window).load(main);
